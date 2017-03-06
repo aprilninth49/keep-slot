@@ -15,6 +15,7 @@
       <div class="logo-container non-selectable no-pointer-events">
         <div class="logo" :style="position">
           <img src="~assets/quasar-logo.png">
+          <span class="test">test</span>
           <p class="caption text-center">
             <span class="desktop-only">Move your mouse.</span>
             <span class="touch-only">Touch screen and move.</span>
@@ -78,7 +79,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style scoped lang="stylus">
 .logo-container
   width 192px
   height 268px
@@ -90,4 +91,6 @@ export default {
 .logo
   position absolute
   transform-style preserve-3d
+.test
+  color red
 </style>
