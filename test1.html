@@ -1,0 +1,39 @@
+<html>
+
+<head>
+  <title>Learning Vue</title>
+  <style>
+  </style>
+</head>
+
+<body>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <div id="demo" v-bind:class="[classA,classB]">
+
+  </div>
+  <script>
+    var vm=new Vue({
+      el:"#demo",
+      data:{
+        classA:"class-a",
+        classB:"class-b"
+      }
+    })
+
+
+  </script>
+  <style type="text/css">
+   class-a{
+      width:100px;
+      height:100px;
+          }
+    class-b{
+      background-color:blue;
+    }
+
+  </style>
+
+</body>
+
+
+</html>

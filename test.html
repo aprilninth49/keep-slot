@@ -8,29 +8,20 @@
 
 <body>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <div id="app-4">
-    <ol>
-      <li v-for="todo in todos">
-        {{ todo.text }}
-      </li>
-    </ol>
+  <div id="demo">
+    b={{b}}
   </div>
   <script>
-    var app4 = new Vue({
-      el: '#app-4',
-      data: {
-        todos: [
-          { text: 'Learn JavaScript' },
-          { text: 'Learn Vue' },
-          { text: 'Build something awesome' }
-        ]
+  var vm=new Vue({
+    el: '#demo',
+    data: {a:"testtest"},
+    computed:{
+      b:function(){
+        return this.a.length
       }
-    })
-    var cat={
-      name:"apple",
-      age:1
     }
-    alert(cat.hasOwnProperty(age));
+ })
+
   </script>
 
 </body>
