@@ -8,19 +8,17 @@
 
 <body>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <div id="demo">
-    b={{b}}
+  <div>
+    <span>Message is:{{msg}}</span>
+    <input type="text" placeholder="address" v-model="msg" >
   </div>
   <script>
-  var vm=new Vue({
-    el: '#demo',
-    data: {a:"testtest"},
-    computed:{
-      b:function(){
-        return this.a.length
-      }
+    var vm = new Vue({
+    el: 'div',
+    data: {
+      msg:" "
     }
- })
+  })
 
   </script>
 
