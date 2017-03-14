@@ -23,7 +23,7 @@
             <div class="item-secondary stamp">
               未完成
             </div>
-            <q-range class="slider" :min="0" :max="1" :step="1"></q-range>
+            <q-range v-model="percentage" class="slider" :min="0" :max="1" :step="1"></q-range>
           </div>
         </div>
     </div>
@@ -34,10 +34,12 @@
 </template>
 
 <script>
+  import { Dialog } from 'quasar'
   export default {
     data() {
       return {
-        toolbarTitle: "我的努力"
+        toolbarTitle: "我的努力",
+        percentage: 0
 
       }
     }
@@ -60,18 +62,24 @@
     font-size:2.8rem;
   }
    /*background-color: #A5DEE4;*/
-  .slider{
-    position:absolute;
-  }
-  .q-range-track{
-    height:0px;
+  /*.slider {
+    position: absolute;
+  }*/
+  .q-range-track {
+    height: 0px;
     background-color: white;
   }
-  .q-range-handle{
-    width:100px;
-    height:150px;
-    top:-100%;
+  .q-range-handle {
+    width: 100px;
+    height: 150px;
+    top: -100%;
     border-radius: 0%;
+  }
+  .handle-at-minimum {
+    background-color: #027be3 !important;
+  }
+  .q-range-handle.dragging {
+    transform: matrix(0.690265, 0, 0, 0.690265, -46.9295, -70.3942);
   }
 
 </style>
