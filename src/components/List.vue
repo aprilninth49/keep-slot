@@ -23,7 +23,7 @@
             <div class="item-secondary stamp">
               未完成
             </div>
-            <q-range class="slider" v-model="rangeNumber" :min="0" :max="1" :step="1"></q-range>
+            <q-range class="slider" :min="0" :max="1" :step="1"></q-range>
           </div>
         </div>
     </div>
