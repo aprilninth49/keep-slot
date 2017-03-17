@@ -1,0 +1,39 @@
+<html>
+
+<head>
+  <title>Token</title>
+  <style>
+  </style>
+</head>
+
+<body>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <div id="token-counter">
+    <span>Token:</span>
+    <span>{{counter}}</span>
+    <button v-on:click='doCounter'>完成</button>
+  </div>
+
+
+  <script>
+
+    new Vue({
+      el: '#token-counter',
+      data: {
+        counter: 0
+      },
+      methods: {
+        doCounter: function(){
+          var total=this.counter+=1;
+          return total;
+        }
+      }
+    })
+
+
+
+  </script>
+
+</body>
+
+</html>
