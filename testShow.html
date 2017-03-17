@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <title>Show</title>
+  <style>
+  </style>
+</head>
+
+<body>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <div id="show-hide">
+    <button v-on:click='showMe'>Show</button>
+    <div v-show='showState'>
+      <button v-on:click='hideMe'>提交</button>
+    </div>
+
+  </div>
+
+
+  <script>
+
+    new Vue({
+      el: '#show-hide',
+      data: {
+        showState: false
+      },
+      methods: {
+        showMe: function(){
+          this.showState=true;
+          return this.showState
+        },
+        hideMe:function(){
+          this.showState=false;
+          return this.showState
+        }
+        // showToggle:function(){
+        //   return !this.showState
+        // }
+      }
+    })
+
+
+
+  </script>
+
+</body>
+
+</html>
