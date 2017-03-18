@@ -8,16 +8,16 @@
 </head>
 
 <body>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <div id="token-counter">
     <span>Token:</span>
-    <the-counter :counter="counter"></the-counter>
+    <the-counter :cc="counter"></the-counter>
     <button v-on:click='doCounter'>完成</button>
   </div>
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script>
     Vue.component('the-counter', {
-      props: ['counter'],
-      template: '<span>{{counter}}</span>',
+      props: ['cc'],
+      template: '<span>{{cc}}</span>',
     })
     new Vue({
       el: '#token-counter',
