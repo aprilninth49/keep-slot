@@ -10,14 +10,11 @@
 <body>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <div id="show-hide">
-    <button v-on:click='showMe'>Show</button>
+    <button v-on:click='showToggle'>Show</button>
     <div v-show='showState'>
-      <button v-on:click='hideMe'>提交</button>
+      <button v-on:click='showToggle'>提交</button>
     </div>
-
   </div>
-
-
   <script>
     new Vue({
       el: '#show-hide',
@@ -25,6 +22,7 @@
         showState: false
       },
       methods: {
+<<<<<<< HEAD
         showMe: function () {
           this.showState = true;
           return this.showState
@@ -32,14 +30,14 @@
         hideMe: function () {
           this.showState = false;
           return this.showState
+=======
+        showToggle: function () {
+          this.showState = !this.showState
+>>>>>>> b023bc7262c4a86caadfb2d595453fe38a68ee1f
         }
-        // showToggle:function(){
-        //   return !this.showState
-        // }
       }
     })
   </script>
-
 </body>
 
 </html>
