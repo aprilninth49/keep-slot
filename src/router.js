@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-function load (component) {
+function load(component) {
   return () => System.import(`components/${component}.vue`)
 }
 
@@ -23,6 +23,7 @@ export default new VueRouter({
   routes: [
     { path: '/', component: load('Index') }, // Default
     { path: '/List', component: load('List') }, // Default
+    { path: '/TodoList', component: load('TodoList') }, // Default
     { path: '*', component: load('Error404') } // Not found
   ]
 })

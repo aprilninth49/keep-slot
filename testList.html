@@ -9,20 +9,23 @@
 
 <body>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <fieldset>
-    <legend>Create New Todo</legend>
-    <label>Todo:</label>
-    <input type="text" v-model='newList.todo'></input>
-    <label>Frequency:</label>
-    <select v-model='newList.frequency'>
+  <div id='list-area'>
+    <fieldset>
+      <legend>Create New Todo</legend>
+      <label>Todo:</label>
+      <input type="text"
+             v-model='newList.todo'></input>
+      <label>Frequency:</label>
+      <select v-model='newList.frequency'>
       <option value='everyday'>everyday</option>
       <option value='everyweek'>everyweek</option>
       <option value='onlyonce'>onlyonce</option>
     </select>
-    <button v-on:click='createTodo'>add</button>
-  </fieldset>
-  <div id='list-area'>
-    <todo-list v-for='list in lists' v-bind:todo-detail='list.todo' v-bind:fre-detail='list.frequency'></todo-list>
+      <button v-on:click='createTodo'>add</button>
+    </fieldset>
+    <todo-list v-for='list in lists'
+               v-bind:todo-detail='list.todo'
+               v-bind:fre-detail='list.frequency'></todo-list>
   </div>
 
 
@@ -41,7 +44,7 @@
 
     new Vue({
       el: '#list-area',
-      components:['todo-list'],
+      components: ['todo-list'],
       data: {
         newList: {
           todo: '',
@@ -62,6 +65,7 @@
       methods: {
         createTodo: function () {
           this.lists.push(this.newList);
+          console.log(this.lists)
           this.newList = { todo: '', frequency: 'onlyonce' }
         }
 
