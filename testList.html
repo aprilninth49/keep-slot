@@ -22,7 +22,7 @@
     <button v-on:click='createTodo'>add</button>
   </fieldset>
   <div id='list-area'>
-    <todo-list v-for='list in lists' v-bind:todoDetail='list.todo' v-bind:freDetail='list.frequency'></todo-list>
+    <todo-list v-for='list in lists' v-bind:todo-detail='list.todo' v-bind:fre-detail='list.frequency'></todo-list>
   </div>
 
 
@@ -41,6 +41,7 @@
 
     new Vue({
       el: '#list-area',
+      components:['todo-list'],
       data: {
         newList: {
           todo: '',
@@ -60,7 +61,7 @@
       },
       methods: {
         createTodo: function () {
-          this.list.push(this.newList);
+          this.lists.push(this.newList);
           this.newList = { todo: '', frequency: 'onlyonce' }
         }
 
