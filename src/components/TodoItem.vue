@@ -20,10 +20,14 @@ export default {
       buttonState: true,
     }
   },
+  created () {
+    this.buttonState=true;
+  },
   methods: {
     doneButton() {
       this.$emit('doCount');
       this.buttonState = false;
+      console.log(1);
     }
   }
 }
