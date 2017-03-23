@@ -4,7 +4,9 @@
     <span>{{todoDetail}}</span>
     <span>Frequency:</span>
     <span>{{freDetail}}</span>
-    <button>delete</button>
+    <button @click='$emit("doCount")'>done!</button>
+    <button @click='$emit("showEdit")'>edit</button>
+    <button @click='$emit("remove")'>delete</button>
   </div>
 </template>
 
@@ -13,5 +15,6 @@ export default {
   name: 'Todo-Item',
   props: ['todoDetail', 'freDetail']
 }
+
 </script>
 

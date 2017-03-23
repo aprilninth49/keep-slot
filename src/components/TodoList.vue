@@ -1,38 +1,38 @@
+
 <template>
   <div>
-    <fieldset>
-      <legend>Create New Todo</legend>
-      <label>Todo:</label>
-      <input type="text"
-             v-model='newList.todo'></input>
-      <label>Frequency:</label>
-      <select v-model='newList.frequency'>
-        <option value='everyday'>everyday</option>
-        <option value='everyweek'>everyweek</option>
-        <option value='onlyonce'>onlyonce</option>
-      </select>
-      <button @click='createTodo'>add</button>
-    </fieldset>
-    <todo-item v-for='list in lists'
-               :todo-detail='list.todo'
-               :fre-detail='list.frequency'></todo-item>
+    <token-counter></token-counter>
+    <button @click="showCreate=true">
+      New Todo</button>
+    <todo-create v-show="showCreate"
+                 @createTodo="createTodo"
+                 @cancelTodo="cancelTodo"></todo-create>
+    <todo-item v-for="item in items"
+               :todo-detail="item.todo"
+               :fre-detail="item.frequency"
+               :number="tokenNumber"
+               @doCount="doCount"
+               @showEdit="showEdit"
+               @remove="remove"></todo-item>
   </div>
 </template>
 
 <script>
+import TokenCounter from './tokenCounter.vue'
 import TodoItem from './TodoItem.vue'
+import TodoCreate from './TodoCreate.vue'
 export default {
-  name: 'List',
+  name: 'item',
   components: {
-    'todo-item': TodoItem
+    'token-counter': TokenCounter,
+    'todo-item': TodoItem,
+    'todo-create': TodoCreate
   },
   data() {
     return {
-      newList: {
-        todo: '',
-        frequency: 'onlyonce'
-      },
-      lists: [
+      tokenNumber:0,
+      showCreate: false,
+      items: [
         {
           todo: 'read news',
           frequency: 'everyday'
@@ -46,13 +46,25 @@ export default {
   },
   computed: {
     a() {
-      return this.lists.length
+      return this.items.length
     }
   },
   methods: {
-    createTodo: function () {
-      this.lists.push(this.newList);
-      this.newList = { todo: '', frequency: 'onlyonce' }
+    createTodo(item) {
+      this.items.unshift(item);
+      this.showCreate = false;
+    },
+    cancelTodo() {
+      this.showCreate = false;
+    },
+    doCount(){
+      this.tokenNumber=this.tokenNumber+=1;
+    },
+    showEdit() {
+      this.showCreate = true;
+    },
+    remove(index) {
+      return this.items.splice(index, 1);
     }
   }
 }

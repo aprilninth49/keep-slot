@@ -24,6 +24,7 @@ export default new VueRouter({
     { path: '/', component: load('Index') }, // Default
     { path: '/List', component: load('List') }, // Default
     { path: '/TodoList', component: load('TodoList') }, // Default
+    { path: '/TestHeader', component: load('TestHeader') }, // Default
     { path: '*', component: load('Error404') } // Not found
   ]
 })
