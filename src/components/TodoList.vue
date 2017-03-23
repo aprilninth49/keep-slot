@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <token-counter></token-counter>
+    <token-counter :number="tokenNumber"></token-counter>
     <button @click="showCreate=true">
       New Todo</button>
     <todo-create v-show="showCreate"
@@ -10,7 +10,6 @@
     <todo-item v-for="item in items"
                :todo-detail="item.todo"
                :fre-detail="item.frequency"
-               :number="tokenNumber"
                @doCount="doCount"
                @showEdit="showEdit"
                @remove="remove"></todo-item>
@@ -30,7 +29,7 @@ export default {
   },
   data() {
     return {
-      tokenNumber:0,
+      tokenNumber: 0,
       showCreate: false,
       items: [
         {
@@ -57,8 +56,8 @@ export default {
     cancelTodo() {
       this.showCreate = false;
     },
-    doCount(){
-      this.tokenNumber=this.tokenNumber+=1;
+    doCount() {
+      this.tokenNumber = this.tokenNumber += 1;
     },
     showEdit() {
       this.showCreate = true;

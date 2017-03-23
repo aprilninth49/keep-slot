@@ -4,7 +4,8 @@
     <span>{{todoDetail}}</span>
     <span>Frequency:</span>
     <span>{{freDetail}}</span>
-    <button @click='$emit("doCount")'>done!</button>
+    <button v-show="buttonState"
+            @click="doneButton">done!</button>
     <button @click='$emit("showEdit")'>edit</button>
     <button @click='$emit("remove")'>delete</button>
   </div>
@@ -13,7 +14,18 @@
 <script>
 export default {
   name: 'Todo-Item',
-  props: ['todoDetail', 'freDetail']
+  props: ['todoDetail', 'freDetail'],
+  data() {
+    return {
+      buttonState: true,
+    }
+  },
+  methods: {
+    doneButton() {
+      this.$emit('doCount');
+      this.buttonState = false;
+    }
+  }
 }
 
 </script>
