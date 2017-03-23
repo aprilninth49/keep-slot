@@ -7,7 +7,8 @@
     <todo-create v-show="showCreate"
                  @createTodo="createTodo"
                  @cancelTodo="cancelTodo"></todo-create>
-    <todo-item v-for="item in items"
+    <todo-item v-for="(item, index) in items"
+               :key="item.k"
                :todo-detail="item.todo"
                :fre-detail="item.frequency"
                @doCount="doCount"
@@ -31,12 +32,15 @@ export default {
     return {
       tokenNumber: 0,
       showCreate: false,
+      k: 2,
       items: [
         {
+          k: 0,
           todo: 'read news',
           frequency: 'everyday'
         },
         {
+          k: 1,
           todo: 'clean litter box',
           frequency: 'everyweek'
         }
@@ -50,7 +54,7 @@ export default {
   },
   methods: {
     createTodo(item) {
-      this.items.unshift(item);
+      this.items.unshift(Object.assign({}, item, { k: this.k++ }));
       this.showCreate = false;
     },
     cancelTodo() {
