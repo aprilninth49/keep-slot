@@ -8,11 +8,16 @@
                  @createTodo="createTodo"
                  @cancelTodo="cancelTodo"></todo-create>
     <todo-edit v-show="editState"
-               @hideEdit="hideEdit"></todo-edit>
+               @hideEdit="hideEdit"
+               @doneEdit="finishEdit"
+               :item-index="editingIndex"
+               :edit-todo="items[editingIndex].todo"
+               :edit-frequency="items[editingIndex].frequency"></todo-edit>
     <todo-item v-for="(item, index) in items"
                :key="item.k"
                :todo-detail="item.todo"
                :fre-detail="item.frequency"
+               :item-index="index"
                @doneTodo="doneTodo"
                @showEdit="showEdit"
                @remove="remove"></todo-item>
@@ -25,7 +30,7 @@ import TodoItem from './TodoItem.vue'
 import TodoCreate from './TodoCreate.vue'
 import TodoEdit from './TodoEdit.vue'
 export default {
-  name: 'item',
+  name: 'list',
   components: {
     'token-counter': TokenCounter,
     'todo-item': TodoItem,
@@ -38,6 +43,7 @@ export default {
       showCreate: false,
       editState: false,
       k: 2,
+      editingIndex: 0,
       items: [
         {
           k: 0,
@@ -68,11 +74,19 @@ export default {
     doneTodo() {
       this.tokenNumber = this.tokenNumber += 1;
     },
-    showEdit() {
+    showEdit(xxx) {
       this.editState = true;
+      this.editingIndex = xxx;
+
     },
     hideEdit() {
       this.editState = false;
+    },
+    finishEdit(todo, frequency) {
+      this.items[this.editingIndex].todo = todo;
+      this.items[this.editingIndex].frequency = frequency;
+      this.editState = false;
+
     },
     remove(index) {
       return this.items.splice(index, 1);

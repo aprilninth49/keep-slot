@@ -24,6 +24,7 @@ export default {
         todo: '',
         frequency: 'onlyonce'
       }
+
     }
   },
   methods: {

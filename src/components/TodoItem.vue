@@ -6,7 +6,7 @@
     <span>{{freDetail}}</span>
     <button v-show="buttonState"
             @click="doneButton">done!</button>
-    <button @click='$emit("showEdit")'>edit</button>
+    <button @click='$emit("showEdit",itemIndex)'>edit</button>
     <button @click='$emit("remove")'>delete</button>
   </div>
 </template>
@@ -14,7 +14,7 @@
 <script>
 export default {
   name: 'Todo-Item',
-  props: ['todoDetail', 'freDetail'],
+  props: ['itemIndex','todoDetail', 'freDetail'],
   data() {
     return {
       buttonState: true,
