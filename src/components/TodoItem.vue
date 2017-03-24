@@ -25,9 +25,8 @@ export default {
   // },
   methods: {
     doneButton() {
-      this.$emit('doCount');
+      this.$emit('doneTodo');
       this.buttonState = false;
-      console.log(1);
     }
   }
 }

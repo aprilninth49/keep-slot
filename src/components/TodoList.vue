@@ -7,11 +7,13 @@
     <todo-create v-show="showCreate"
                  @createTodo="createTodo"
                  @cancelTodo="cancelTodo"></todo-create>
+    <todo-edit v-show="editState"
+               @hideEdit="hideEdit"></todo-edit>
     <todo-item v-for="(item, index) in items"
                :key="item.k"
                :todo-detail="item.todo"
                :fre-detail="item.frequency"
-               @doCount="doCount"
+               @doneTodo="doneTodo"
                @showEdit="showEdit"
                @remove="remove"></todo-item>
   </div>
@@ -21,17 +23,20 @@
 import TokenCounter from './tokenCounter.vue'
 import TodoItem from './TodoItem.vue'
 import TodoCreate from './TodoCreate.vue'
+import TodoEdit from './TodoEdit.vue'
 export default {
   name: 'item',
   components: {
     'token-counter': TokenCounter,
     'todo-item': TodoItem,
-    'todo-create': TodoCreate
+    'todo-create': TodoCreate,
+    'todo-edit': TodoEdit
   },
   data() {
     return {
       tokenNumber: 0,
       showCreate: false,
+      editState: false,
       k: 2,
       items: [
         {
@@ -60,11 +65,14 @@ export default {
     cancelTodo() {
       this.showCreate = false;
     },
-    doCount() {
+    doneTodo() {
       this.tokenNumber = this.tokenNumber += 1;
     },
     showEdit() {
-      this.showCreate = true;
+      this.editState = true;
+    },
+    hideEdit() {
+      this.editState = false;
     },
     remove(index) {
       return this.items.splice(index, 1);
